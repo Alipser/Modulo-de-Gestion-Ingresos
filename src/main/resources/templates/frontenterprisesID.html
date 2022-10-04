@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100" xmlns:th="http:/www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>EmpleadoDetalle</title>
+
+</head>
+<body class="d-flex h-100 text-center text-bg-dark">
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto">
+        <div>
+            <h3 class="float-md-start mb-0">FinanFilms</h3>
+            <nav class="nav nav-masthead justify-content-center float-md-end">
+                <a class="nav-link fw-bold py-1 px-3 active" aria-current="page" href="/inicio">Inicio</a>
+                <a class="nav-link fw-bold py-1 px-3" href="/empleados">Empleados</a>
+                <a class="nav-link fw-bold py-1 px-3" href="/empresas">Empresa</a>
+                <a class="nav-link fw-bold py-1 px-3" href="/enterprises">Movimientos</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="px-3">
+      <div class = "px-4 py-3 my-2 text-center">
+        <h1 class="display-5 text-white fw-bold mb-4">Detalle de Empleado</h1>
+          <div class="d-flex justify-content-center gap-3">
+              <div th:each="movDineroid:${movDineroid}" class="card" style="width: 15rem;">
+                <img src="/img/LogoFF2.png" class="card-img-top" alt="NO ESTA TOMANDO LA FOTO">
+                        <div class="card-body">
+                            <form th:action="@{/enterprises/{id}(id=${movDineroid.Id})}" th:method="put"   class="d-flex flex-column gap-3 align-items-center">
+                                <h9 class="text-black fw-bold">Concepto:</h9>
+                                <input th:field="*{movDineroid.ConceptoMovimiento}" class="form-control" type="text" />
+                                <h9 class="text-black fw-bold">Valor absoluto del monto:</h9>
+                                <input th:field="*{movDineroid.MontoMovimiento}" class="form-control" type="number" />
+                                <h9 class="text-black fw-bold">¿Es un Ingreso?:</h9>
+                                <input th:field="*{movDineroid.Ingreso}" class="form-control" type="text" />
+
+                                <div class="d-flex gap-3 px-4 mx-auto flex-column">
+                                <button class="btn btn-primary btn-lg px-4 gap-3" type="submit"> Modificar </button>
+
+                                <a href="/enterprises" class="btn btn-outline-secondary px-4 gap-3"  type="submit">Cancelar</a>
+                                </div>
+
+                            </form>
+
+
+                        </div>
+
+                </div>
+
+
+          </div>
+
+
+            </div>
+        <form th:action="@{/enterprises/{id}(id=${movDineroid.Id})}" th:method="delete">
+            <button class="btn btn-danger btn-sm">Eliminar</button>
+        </form>
+    </main>
+
+    <footer class="mt-auto text-white-50">
+        <p>Propiedad de Finanfilms generado con <a href="https://getbootstrap.com/" class="text-white">  Bootstrap </a></p>
+    </footer>
+</div>
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>
